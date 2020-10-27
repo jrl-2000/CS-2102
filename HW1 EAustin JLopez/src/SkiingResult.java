@@ -6,8 +6,18 @@ public class SkiingResult implements IEvent {
     double lap2Time;
     double lap3Time;
     double lap4Time;
-    int position;
     int penalties;
+    int position;
+
+    public SkiingResult(double lap1Time, double lap2Time, double lap3Time, double lap4Time, int position, int penalties) {
+        this.lap1Time = lap1Time;
+        this.lap2Time = lap2Time;
+        this.lap3Time = lap3Time;
+        this.lap4Time = lap4Time;
+        this.position = position;
+        this.penalties = penalties;
+
+    }
 
 
     public double pointsEarned() {
