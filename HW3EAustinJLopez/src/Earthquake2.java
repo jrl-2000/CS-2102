@@ -12,17 +12,6 @@ class Earthquake2 {
         return ((int)dateNum % 10000) / 100;
     }
 
-    public LinkedList<MaxHzReport> dailyMaxForMonth(LinkedList<Double> data, int month) {
-        LinkedList<MaxHzReport> max = new LinkedList<MaxHzReport>();
-        for (int i = 0; i < data.get(i); i++){
-            if (extractMonth(data.get(i)) == month) {
-
-                max.add(calcMonth(data, i));
-            }
-        }
-        return max;
-    }
-
     public MaxHzReport calcMonth(LinkedList<Double> data, int index) {
         double thisDate = data.get(index);
         double temp = 0;
@@ -34,6 +23,18 @@ class Earthquake2 {
         MaxHzReport oct = new MaxHzReport(thisDate, temp);
         return oct;
     }
+
+    public LinkedList<MaxHzReport> dailyMaxForMonth(LinkedList<Double> data, int month) {
+        LinkedList<MaxHzReport> max = new LinkedList<MaxHzReport>();
+        for (int i = 0; i < data.get(i); i++){
+            if (extractMonth(data.get(i)) == month) {
+
+                max.add(calcMonth(data, i));
+            }
+        }
+        return max;
+    }
+
 
 
 }

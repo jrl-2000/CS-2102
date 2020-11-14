@@ -17,9 +17,9 @@ class Earthquake1 {
         LinkedList<MaxHzReport> max = new LinkedList<MaxHzReport>();
         for (int i = 0; i < data.get(i); i++){
             if (extractMonth(data.get(i)) == month) {
-                double thisDate = data.get(i);
+                double thisDate = data.get(i); //save the date
                 double temp = 0;
-                for (int f = i+1; f < data.size() && isDate(data.get(f)) == false; f++){ //maybe false
+                for (int f = i+1; f < data.size() && isDate(data.get(f)) == false; f++){ //should be false b/c we don't want a new date
                     if (data.get(f) > temp){
                         temp = data.get(f);
                     }

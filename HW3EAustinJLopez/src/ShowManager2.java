@@ -2,26 +2,19 @@ import java.util.LinkedList;
 
 class ShowManager2 {
 
-    LinkedList<Show> showsList;
-    LinkedList<Show> daytime;
-    LinkedList<Show> primetime;
-    LinkedList<Show> latenight;
-    LinkedList<Show> intermediate;
+
 
     ShowManager2() {
-        this.showsList = new LinkedList<Show>();
-        this.daytime = new LinkedList<Show>();
-        this.primetime = new LinkedList<Show>();
-        this.latenight = new LinkedList<Show>();
-        this.intermediate = new LinkedList<Show>();
+
     }
 
     /**
      * searches a linked list to see if the shows a special
      * @return a linked list with non special shows
      */
-    public LinkedList<Show> isItSpecial(){
-        for(Show thisShow : this.showsList) {
+    public LinkedList<Show> isItSpecial(LinkedList<Show> shows){
+        LinkedList<Show> intermediate = new LinkedList<Show>();
+        for(Show thisShow : shows) {
             if ( thisShow.isSpecial == false) {
                 intermediate.addLast(thisShow);
             }
@@ -37,12 +30,17 @@ class ShowManager2 {
 
     public ShowSummary organizeShows(LinkedList<Show> shows)
     {
-        for (Show thisShow: intermediate){
+        LinkedList<Show> showsList = new LinkedList<Show>();
+        LinkedList<Show> daytime = new LinkedList<Show>();
+        LinkedList<Show> primetime = new LinkedList<Show>();
+        LinkedList<Show> latenight= new LinkedList<Show>();
+
+        for (Show thisShow: shows){
             if (600 <= thisShow.broadcastTime && thisShow.broadcastTime < 1700){
                 daytime.add(thisShow);
             } else if (1700 <= thisShow.broadcastTime && thisShow.broadcastTime < 2200) {
                 primetime.add(thisShow);
-            } else if (2200 <= thisShow.broadcastTime && thisShow.broadcastTime < 2400 && 0 <= thisShow.broadcastTime && thisShow.broadcastTime < 100) {
+            } else if (2200 <= thisShow.broadcastTime && thisShow.broadcastTime < 2400 || 0 <= thisShow.broadcastTime && thisShow.broadcastTime < 100) {
                 latenight.add(thisShow);
             }
         }

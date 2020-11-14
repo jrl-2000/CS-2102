@@ -6,7 +6,11 @@ public class DataSmoothExamples
 {
     LinkedList<Show> shows = new LinkedList<Show>();
     LinkedList<Double> showResults = new LinkedList<Double>();
+    LinkedList<Double> showResults1 = new LinkedList<Double>();
     DataSmooth1 D1 = new DataSmooth1();
+    DataSmooth1 D2 = new DataSmooth1();
+
+    LinkedList<Show> shows1 = new LinkedList<Show>();
 
     public DataSmoothExamples()
     {
@@ -39,6 +43,8 @@ public class DataSmoothExamples
         showResults.add(29.75);
         showResults.add(29.08333);
         showResults.add(58.0);
+        
+
     }
 
     @Test
@@ -52,20 +58,20 @@ public class DataSmoothExamples
         }
     }
 
+
+//change i for each element to test
+
 }
 //Problem 2:
-// took in a list  of shows and made a new linked list of doubles
-//added the 0th term in the list since it doesn't get any manipulation by the smoothing of data
-//traversing through the list we added the terms before and after and divided by 3 for the average
-//then add the last term because it doesn't get any manipulation by the smoothing of data
-//return the list runTime
-
-
-//2nd Way:
-// we split up the 1st way into different functions
 //first make the dataSmooth function which makes a new double Linked Lists and puts all the runTimes in it and calls the other function in the return statement
 // make an averaging function that takes in 3 double and divides them by 3
 //and make  the main helper by traversing the new linked list of doubles calling the avg function when getting the before and after terms in the list
 // it also adds the first term and the last term because they doesn't get any manipulation by the smoothing of data
 // call this function in the return statement in dataSmooth
 //
+//2nd Way:
+// took in a list  of shows and made a new linked list of doubles
+//added the 0th term in the list since it doesn't get any manipulation by the smoothing of data
+//traversing through the list we added the terms before and after and divided by 3 for the average
+//then add the last term because it doesn't get any manipulation by the smoothing of data
+//return the list runTime

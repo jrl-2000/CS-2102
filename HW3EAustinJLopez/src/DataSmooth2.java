@@ -17,6 +17,7 @@ class DataSmooth2 {
     }
 
     public double avg (double a, double b, double c){ // seperate function for the smoothing
+
         return (a + b + c) / 3.0;
     }
 
@@ -29,6 +30,14 @@ class DataSmooth2 {
         smoothMove.addLast(runTimes.getLast());
         return  smoothMove;
     }
+
+    /**
+     * smooths out the data for the run time of a show in a list
+     *
+     * @param shows a list of shows
+     * @return the runTime smoothed out list
+     */
+
 
 
 

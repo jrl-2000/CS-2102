@@ -3,16 +3,8 @@ import java.util.LinkedList;
 class ShowManager1 {
 
 
-    LinkedList<Show> showsList;
-    LinkedList<Show> daytime;
-    LinkedList<Show> primetime;
-    LinkedList<Show> latenight;
 
     ShowManager1() {
-        this.showsList = new LinkedList<Show>();
-        this.daytime = new LinkedList<Show>();
-        this.primetime = new LinkedList<Show>();
-        this.latenight = new LinkedList<Show>();
     }
 
 
@@ -23,13 +15,16 @@ class ShowManager1 {
      */
     public ShowSummary organizeShows(LinkedList<Show> shows)
     {
-        for(Show thisShow : this.showsList) {
-            if (600 <= thisShow.broadcastTime && thisShow.broadcastTime < 1700 && thisShow.isSpecial == false) {
-                daytime.add(thisShow);
-            } else if (1700 <= thisShow.broadcastTime && thisShow.broadcastTime < 2200  && thisShow.isSpecial == false) {
-                primetime.add(thisShow);
-            }else if (2200 <= thisShow.broadcastTime && thisShow.broadcastTime < 2400 && 0 <= thisShow.broadcastTime && thisShow.broadcastTime < 100 && thisShow.isSpecial == false) {
-                latenight.add(thisShow);
+        LinkedList<Show> daytime = new LinkedList<Show>();
+        LinkedList<Show> primetime = new LinkedList<Show>();
+        LinkedList<Show> latenight = new LinkedList<Show>();
+        for(Show aShow : shows) {
+            if (600 <= aShow.broadcastTime && aShow.broadcastTime < 1700 && aShow.isSpecial == false) {
+                daytime.add(aShow);
+            } else if (1700 <= aShow.broadcastTime && aShow.broadcastTime < 2200  && aShow.isSpecial == false) {
+                primetime.add(aShow);
+            }else if (2200 <= aShow.broadcastTime && aShow.broadcastTime < 2400 || 0 <= aShow.broadcastTime && aShow.broadcastTime < 100 && aShow.isSpecial == false) {
+                latenight.add(aShow);
             }
         }
         return new ShowSummary(daytime, primetime, latenight);

@@ -1,24 +1,33 @@
 import java.util.LinkedList;
 
 class DataSmooth1 {
+
+    double average;
+
+
     DataSmooth1() {
+        this.average = average;
     }
-    /**
-     * smooths out the data for the run time of a show in a list
-     * @param shows a list of shows
-     * @return the runTime smoothed out list
-     */
     public LinkedList<Double> dataSmooth(LinkedList<Show> shows) {
-
+        int counter1 = 0;
         LinkedList<Double> runTime = new LinkedList<Double>();
-        //use of a index for loop
-        runTime.add(0, (double) (shows.get(0).episodes.get(0).runTime));
-        for (int i = 1; i < shows.get(i).episodes.size() -1; i++) {
-
-            runTime.add(i, (double) (shows.get(i-1).episodes.get(i-1).runTime + shows.get(i).episodes.get(i).runTime + shows.get(i+1).episodes.get(i+1).runTime) / 3.0);
+        for (Show s : shows) {
+            if (counter1 == 0 || counter1 + 1 == shows.size()) {
+                runTime.add(helper(s.episodes));
+            }else {
+                runTime.add((helper(shows.get(counter1 - 1).episodes)
+                        + helper(shows.get(counter1).episodes) + helper(shows.get(counter1 + 1).episodes)) / 3.0);
             }
-        runTime.addLast((double) shows.getLast().episodes.getLast().runTime);
+            counter1++;
+        }
         return runTime;
     }
+    double helper(LinkedList<Episode> episode) {
+        average = 0;
+        for (int i = 0; i < episode.size(); i++) {
+            average = average + episode.get(i).runTime;
+        }
+        average = average / (episode.size());
+        return average;
+    }
 }
-
